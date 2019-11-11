@@ -4,7 +4,7 @@ This document aggregates troubleshooting guidance for all the IRIS based demo ap
 
 ## Docker related problems
 
-## IRIS Startup Aborted
+### IRIS Startup Aborted
 
 If you see the following when trying to start the application:
 
