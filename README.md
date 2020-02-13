@@ -4,6 +4,18 @@ This document aggregates troubleshooting guidance for all the IRIS based demo ap
 
 ## Docker related problems
 
+### Cannot create container for service X
+
+If you see an error like this on your Windows machine:
+
+```
+ERROR: for irisdemo-demo-readmission_risksrv_1  Cannot create container for service risksrv: status code not OK but 500: {"Message":"Unhandled exception: Drive has not been shared"}
+ERROR: for risksrv  Cannot create container for service risksrv: status code not OK but 500: {"Message":"Unhandled exception: Drive has not been shared"}
+ERROR: Encountered errors while bringing up the project.
+```
+
+That is probably because you have not given Docker permission to access your windows folder. Normally, when you start a docker container or a composition that is using a shared volume, Docker will trigger a Windows prompt for giving Docker permissions to access these folders. If you have not given Docker permission to see your local folders on this opportunity, you can open Docker Settings and find the option to add C:\ (or the root folder where your code is) so that Windows will allow access to it.
+
 ### IRIS Startup Aborted
 
 If you see the following when trying to start the application:
