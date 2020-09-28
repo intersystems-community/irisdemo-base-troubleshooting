@@ -84,3 +84,26 @@ Startup aborted.
 ```
 
 Apply solution for **Problem 1** above.
+
+### Problem 4 - Driver failed programming external connectivity on endpoint
+
+If you see the following when trying to start the application:
+
+```
+ERROR: for twittersrv  Cannot start service twittersrv: driver failed programming external connectivity on endpoint irisdemo-demo-twittersentiment_twittersrv_1 (6be7b2944c43671bc56fed4763cfd06401a328c47c981fce24e2de8b1ea11a6b): Bind for 0.0.0.0:9092 failed: port is already allocated
+```
+
+This service was trying to listen to port 9092. There was something already using that port. It could be another demo that uses the same port. You can use the following command to investigate this possibility:
+
+```bash
+docker ps -a
+```
+
+If you see containers from other demos running or stopped, try to see if one of them is using port 9092. If they are, you may want to switch to the folder you used to start that demo and run:
+
+```
+docker-compose stop
+docker-compose rm -y
+```
+
+Now that the other demo is stopped and that their containers are removed, you can try to start your demo again.
